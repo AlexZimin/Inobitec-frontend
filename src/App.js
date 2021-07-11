@@ -2,8 +2,25 @@ import './App.css';
 import Tree from '@naisutech/react-tree';
 import { Component } from 'react';
 import nodeService from './services/nodeService';
+import NodeDetailed from './components/nodeDetailed';
 
 
+function convertData(data) {
+  const convertedData = [];
+  console.log('Print data from func')
+  console.log(data)
+  for (let i=0; i<data.length; i++){
+    const tmp = {
+      "id": data[i].id,
+      "parentId": data[i].parent_id,
+      "label": data[i].name,
+      "items": null
+    }
+    convertedData.push(tmp)
+  }
+  console.log(convertedData)
+  return convertedData;
+}
 
 class App extends Component{
   constructor(props){
@@ -14,6 +31,8 @@ class App extends Component{
       items: []
     };
   }
+
+
 
   async componentDidMount() {
     await fetch("http://localhost:8080/api/node")
@@ -41,21 +60,21 @@ class App extends Component{
 
   render() {
     const { error, isLoaded, items } = this.state;
-    console.log('Print items from component');
-    console.log(items);
+    const convData = convertData(items);
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
       return <div>Loading...</div>;
     } else {
       return (
-        <ul>
-          {items.map(item => (
-            <li key={item.id}>
-              {item.name}
-            </li>
-          ))}
-        </ul>
+        <div style={{ display: 'flex', flexWrap: 'nowrap', flexGrow: 1 }}>
+          <div style={{ width: '50%', display: 'flex',}}>
+            <Tree nodes={convData} showEmptyItems size="half" theme={'light'}/>
+          </div>
+          <div>
+            <NodeDetailed/>
+          </div>
+        </div>
       );
     }
   }
