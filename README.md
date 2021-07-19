@@ -1,8 +1,8 @@
 # Inobitec frontend
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).\
-This is frontend partof work for Inobitec practice
-
+This is frontend part of work for Inobitec practice
+![Screenshot](screen/screenshot.png)
 ## Available Scripts
 
 In the project directory, you can run:
