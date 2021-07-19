@@ -1,0 +1,21 @@
+li {
+    list-style-type: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+  
+ul {
+    padding-left: 10px;
+}
+
+span {
+    line-height: 30px;
+    padding: 5px;
+}
+span::selection{
+    background-color: #dfe6ed;
+}
+.selected{
+    background-color: #e1e6eb;
+}

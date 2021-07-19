@@ -2,19 +2,25 @@ import api from "./api";
 
 const nodeService = {
     get(nodeId){
-        return api().get(`node/${nodeId}`)
+        return api().get(`nodes/${nodeId}`)
     },
     getAll(){
-        return api().get('node')
+        return api().get('nodes')
+    },
+   async getRoot(){
+        return await api().get('nodes/root')
+    },
+    getChildren(nodeId){
+        return api().get(`nodes/${nodeId}/children/`)
     },
     create(node){
-        return api().post('node',node)
+        return api().post('nodes',node)
     },
-    change(node){
-        return api().put('node',node)
+    update(node){
+        return api().put('nodes/',node)
     },
     remove(nodeId){
-        return api().delete(`node/${nodeId}`)
+        return api().delete(`nodes/${nodeId}`)
     }
 }
 

@@ -1,0 +1,10 @@
+.AddDeleteButtons-block{
+    width: 50%;
+    height: auto;
+    display: flex;
+    flex-flow: column wrap;
+
+}
+.AddDeleteButtons-block button{
+    margin-bottom: 10px;
+}
